@@ -1,0 +1,22 @@
+@import "../../colors";
+
+input.input-buscar {
+  font-size: 18px;
+  color: $gray;
+  height: 39px;
+  border-radius: 4px 0px 0px 4px;
+  border: 0 rgba(0, 0, 0, 0.2);
+  padding: 4px 16px;
+  width: 100%;
+}
+
+button {
+  border: none;
+  border-radius: 0px 4px 4px 0px;
+  padding: 0px 15px;
+}
+
+form {
+  width: 100%;
+  display: flex;
+}
