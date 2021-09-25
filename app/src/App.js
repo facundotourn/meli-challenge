@@ -1,7 +1,7 @@
 import { Route, Switch, Link } from "react-router-dom";
-import "./App.css";
+import "./App.scss";
 import ViewResultados from "./views/ViewResultados";
-import ViewBusqueda from "./views/VistaBusqueda";
+import { ViewBusqueda } from "./views/busqueda";
 import ViewPDP from "./views/ViewPDP";
 
 function App() {
