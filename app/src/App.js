@@ -1,8 +1,8 @@
 import { Route, Switch } from "react-router-dom";
 import "./App.scss";
-import ViewResultados from "./views/ViewResultados";
+import ViewResultados from "./views/resultados";
 import { ViewBusqueda } from "./views/busqueda";
-import ViewPDP from "./views/ViewPDP";
+import ViewPDP from "./views/pdp";
 import Header from "./components/Header";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={ViewBusqueda} />
           <Route exact path="/items" component={ViewResultados} />
-          <Route exact path="/pdp" component={ViewPDP} />
+          <Route exact path="/items/:id" component={ViewPDP} />
         </Switch>
       </div>
     </>

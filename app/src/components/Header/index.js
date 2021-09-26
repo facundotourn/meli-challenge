@@ -1,6 +1,5 @@
 import React from "react";
 import { useHistory } from "react-router";
-import { searchItems } from "../../services/items";
 import Input from "../Input";
 import Logo from "../Logo";
 import "./index.scss";
@@ -14,6 +13,7 @@ export default function Header() {
 
     history.push(`/items?search=${query}`);
   };
+
   return (
     <header>
       <div className="nav-bounds">
