@@ -30,14 +30,15 @@ module.exports.parseItem = (item) => {
 };
 
 module.exports.parseItemsData = (data) => {
-  const categories = data.filters.find((filter) => {
+  const { filters, available_filters } = data;
+  let categories = [...filters, ...available_filters].find((filter) => {
     return filter.id === CATEGORY_FILTER_ID;
   });
 
   return {
     author: this.buildAuthor(),
     categories: categories.values.map((category) => category.name),
-    items: data.results.map(parseItem),
+    items: data.results.map(this.parseItem),
   };
 };
 

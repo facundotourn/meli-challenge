@@ -1,15 +1,1 @@
 @import "../../colors";
-
-header {
-  background-color: $yellow;
-}
-
-.nav-bounds {
-  height: auto;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 10px;
-
-  display: flex;
-  flex-direction: row;
-}

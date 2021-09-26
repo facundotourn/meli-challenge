@@ -5,7 +5,7 @@ import search from "../../assets/ic_Search.png";
 
 export default function Input({ onSubmit }) {
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={(e) => onSubmit(e)}>
       <input
         type="text"
         placeholder="Nunca dejes de buscar"

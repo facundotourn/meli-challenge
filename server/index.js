@@ -1,14 +1,22 @@
 const express = require("express");
 const app = express();
 const axios = require("axios");
+const cors = require("cors");
+
+app.use(cors());
 
 const { parseItemsData, parseItem, buildAuthor } = require("./util");
-const { AUTHOR_NAME, AUTHOR_LASTNAME } = require("./util/constants");
 
 const port = 3001;
 axios.defaults.baseURL = "https://api.mercadolibre.com";
 
 app.get("/api/items", (req, res) => {
+  const { q } = req.query;
+  if (!q) {
+    res.status(500);
+    res.end();
+  }
+
   axios
     .get(`/sites/MLA/search`, {
       params: req.query,

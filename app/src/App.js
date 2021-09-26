@@ -1,26 +1,17 @@
-import { Route, Switch, Link } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import "./App.scss";
 import ViewResultados from "./views/ViewResultados";
 import { ViewBusqueda } from "./views/busqueda";
 import ViewPDP from "./views/ViewPDP";
+import Header from "./components/Header";
 
 function App() {
   return (
     <>
-      <ul>
-        <li>
-          <Link to={"/"}>Busqueda</Link>
-        </li>
-        <li>
-          <Link to={"/resultados"}>Resultados</Link>
-        </li>
-        <li>
-          <Link to={"/pdp"}>PDP</Link>
-        </li>
-      </ul>
+      <Header></Header>
       <Switch>
         <Route exact path="/" component={ViewBusqueda} />
-        <Route exact path="/resultados" component={ViewResultados} />
+        <Route exact path="/items" component={ViewResultados} />
         <Route exact path="/pdp" component={ViewPDP} />
       </Switch>
     </>
