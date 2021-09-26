@@ -10,10 +10,8 @@ export default function Header() {
 
   const handleBusqueda = (e) => {
     e.preventDefault();
-    console.log(e);
     const query = e.target["0"].value;
 
-    searchItems(query);
     history.push(`/items?search=${query}`);
   };
   return (

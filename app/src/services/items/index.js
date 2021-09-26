@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export function searchItems(query) {
+export async function searchItems(query) {
   console.log("query a buscar", query);
-  axios
+  return axios
     .get("/api/items", {
       params: {
         q: query,
@@ -10,6 +10,7 @@ export function searchItems(query) {
     })
     .then((res) => {
       console.log(res.data);
+      return res;
     })
     .catch((err) => {
       console.error(err);

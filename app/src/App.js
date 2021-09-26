@@ -9,11 +9,13 @@ function App() {
   return (
     <>
       <Header></Header>
-      <Switch>
-        <Route exact path="/" component={ViewBusqueda} />
-        <Route exact path="/items" component={ViewResultados} />
-        <Route exact path="/pdp" component={ViewPDP} />
-      </Switch>
+      <div className="container">
+        <Switch>
+          <Route exact path="/" component={ViewBusqueda} />
+          <Route exact path="/items" component={ViewResultados} />
+          <Route exact path="/pdp" component={ViewPDP} />
+        </Switch>
+      </div>
     </>
   );
 }
