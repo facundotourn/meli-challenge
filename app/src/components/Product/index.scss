@@ -1,0 +1,75 @@
+@import "../../colors";
+
+.product-detail {
+  background-color: white;
+  border-radius: 4px;
+  padding: 32px;
+
+  .main {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+
+    .product-image {
+      grid-column: 1/8;
+      grid-row: 1;
+
+      display: flex;
+      justify-content: center;
+
+      img {
+        width: 100%;
+        max-width: 680px;
+        margin: 0 auto;
+      }
+    }
+
+    .product-info {
+      grid-column: 8/11;
+      grid-row: 1;
+
+      display: grid;
+      grid-template-rows: auto auto auto 1fr;
+      row-gap: 32px;
+
+      p.product-sales {
+        font-size: 14px;
+        color: $gray;
+        margin-bottom: 16px;
+      }
+
+      .title {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .price {
+        font-size: 46px;
+      }
+
+      .buy-button {
+        margin-right: 32px;
+      }
+    }
+  }
+}
+
+.description-wrapper {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+
+  div.product-description {
+    padding: 32px;
+    grid-column: 1/8;
+    grid-row: 1;
+
+    p.description-title {
+      font-size: 28px;
+      margin-bottom: 32px;
+    }
+
+    p.description-content {
+      font-size: 16px;
+      color: $gray;
+    }
+  }
+}

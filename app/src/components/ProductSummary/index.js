@@ -1,7 +1,7 @@
 import React from "react";
-import { formatCurrency } from "../../util";
 import "./index.scss";
 import imgFreeShipping from "../../assets/ic_shipping.png";
+import Price from "../Price";
 
 export default function ProductSummary({ item, onProductClick }) {
   const {
@@ -17,7 +17,7 @@ export default function ProductSummary({ item, onProductClick }) {
       <div className="product-summary-details">
         <div className="details-main-column">
           <div className="product-price-container">
-            <p className="p-price">{formatCurrency(amount)}</p>
+            <Price className="p-price" amount={amount} />
             <div className="free-shipping-container">
               {free_shipping && (
                 <img src={imgFreeShipping} alt="free shipping" />

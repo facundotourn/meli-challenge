@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import Breadcrumb from "../../components/Breadcrumb";
+import Product from "../../components/Product";
 import { getItem } from "../../services/item";
 import "./index.scss";
 
@@ -9,13 +11,19 @@ export default function ViewPDP() {
 
   console.log(id);
   useEffect(() => {
-    getItem(id).then((data) => setItem(data.item));
+    getItem(id)
+      .then((data) => setItem(data.item))
+      .catch((err) => console.error(err));
   }, [id]);
 
+  if (!Object.keys(item).length) {
+    return null;
+  }
+
   return (
-    <div>
-      <h1>PDP</h1>
-      <h1>{item.title}</h1>
-    </div>
+    <>
+      <Breadcrumb />
+      <Product product={item} />
+    </>
   );
 }

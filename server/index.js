@@ -40,13 +40,13 @@ app.get("/api/items/:id", (req, res) => {
     .all([itemRequest, itemDescriptionRequest])
     .then(
       axios.spread(({ data: itemData }, { data: descriptionData }) => {
-        const { plaint_text } = descriptionData;
+        const { plain_text } = descriptionData;
 
         res.send({
           author: buildAuthor(),
           item: {
             ...parseItem(itemData),
-            description: plaint_text,
+            description: plain_text,
           },
         });
       })

@@ -22,7 +22,7 @@ export default function ViewResultados({ location, history }) {
 
   return (
     <>
-      <Breadcrumb style={{ margin: "16px 0px" }}></Breadcrumb>
+      <Breadcrumb />
       <div className="items-container">
         {items.map((item) => (
           <ProductSummary
