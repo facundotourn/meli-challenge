@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.scss";
-import imgFreeShipping from "../../assets/ic_shipping.png";
+import imgFreeShipping from "../../assets/ic_shipping@2x.png.png.png";
 import Price from "../Price";
 
 export default function ProductSummary({ item, onProductClick }) {
@@ -20,7 +20,7 @@ export default function ProductSummary({ item, onProductClick }) {
             <Price className="p-price" amount={amount} />
             <div className="free-shipping-container">
               {free_shipping && (
-                <img src={imgFreeShipping} alt="free shipping" />
+                <img src={imgFreeShipping} alt="free shipping" height={25} />
               )}
             </div>
           </div>

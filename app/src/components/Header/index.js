@@ -11,6 +11,8 @@ export default function Header() {
     e.preventDefault();
     const query = e.target["0"].value;
 
+    if (!query.length) return;
+
     history.push(`/items?search=${query}`);
   };
 

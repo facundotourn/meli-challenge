@@ -27,12 +27,14 @@ export default function Product({ product }) {
           <Button className="buy-button">{"Comprar"}</Button>
         </div>
       </div>
-      <div className="description-wrapper">
-        <div className="product-description">
-          <p className="description-title">Descripción del producto</p>
-          <p className="description-content">{description}</p>
+      {description && (
+        <div className="description-wrapper">
+          <div className="product-description">
+            <p className="description-title">Descripción del producto</p>
+            <p className="description-content">{description}</p>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

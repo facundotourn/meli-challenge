@@ -11,10 +11,32 @@ export default function ViewResultados({ location, history }) {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    searchItems(query).then((data) => {
-      setItems(data.items);
-    });
-  }, [query]);
+    const storedSearch = JSON.parse(
+      localStorage.getItem("product_search") || "{}"
+    );
+
+    if (typeof storedSearch[query] !== "undefined") {
+      setItems(storedSearch[query]);
+      return;
+    }
+
+    searchItems(query)
+      .then((data) => {
+        let storedSearch = JSON.parse(
+          localStorage.getItem("product_search") || "{}"
+        );
+
+        localStorage.setItem(
+          "product_search",
+          JSON.stringify({ ...storedSearch, [query]: data.items })
+        );
+        setItems(data.items);
+      })
+      .catch((err) => {
+        console.error(err);
+        history.push("/");
+      });
+  }, [query, history]);
 
   const handleProductClick = (id) => {
     history.push(`/items/${id}`);
