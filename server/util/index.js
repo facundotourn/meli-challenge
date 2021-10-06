@@ -4,7 +4,7 @@ const {
   AUTHOR_LASTNAME,
 } = require("./constants");
 
-module.exports.parseItem = (item) => {
+module.exports.buildItem = (item) => {
   const {
     id,
     title,
@@ -29,17 +29,10 @@ module.exports.parseItem = (item) => {
   };
 };
 
-module.exports.parseItemsData = (data) => {
-  const { filters, available_filters } = data;
-  let categories = [...filters, ...available_filters].find((filter) => {
-    return filter.id === CATEGORY_FILTER_ID;
-  });
+module.exports.buildItems = (results, cant) => {
+  results = results.splice(0, cant);
 
-  return {
-    author: this.buildAuthor(),
-    categories: categories.values.map((category) => category.name),
-    items: data.results.map(this.parseItem),
-  };
+  return results ? results.map(this.buildItem) : [];
 };
 
 module.exports.buildAuthor = () => {
@@ -47,4 +40,8 @@ module.exports.buildAuthor = () => {
     name: AUTHOR_NAME,
     lastname: AUTHOR_LASTNAME,
   };
+};
+
+module.exports.buildCategories = (data) => {
+  return [];
 };
