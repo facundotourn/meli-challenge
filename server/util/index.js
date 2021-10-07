@@ -17,7 +17,6 @@ module.exports.buildItem = (item) => {
     shipping: { free_shipping },
     seller_address: { state },
     sold_quantity,
-    category_id,
   } = item;
 
   return {
@@ -83,11 +82,13 @@ module.exports.buildCategories = (data) => {
     (filter) => filter.id === CATEGORY_FILTER_ID
   );
 
+  console.log(categoryFilter);
+
   if (categoryFilter.values[0].path_from_root) {
     return categoryFilter.values[0].path_from_root;
   } else {
-    return category.get(categoryFilter.values[0].id).then(({ data }) => {
-      return data.path_from_root;
+    return category.get(categoryFilter.values[0].id).then((productCategory) => {
+      return productCategory.path_from_root;
     });
   }
 };
