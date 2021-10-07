@@ -9,6 +9,7 @@ export default function ProductSummary({ item, onProductClick }) {
     price: { amount },
     title,
     free_shipping,
+    state,
   } = item;
 
   return (
@@ -27,7 +28,7 @@ export default function ProductSummary({ item, onProductClick }) {
           <p className="p-title">{title}</p>
         </div>
         <div className="details-location-column">
-          <span>Capital Federal</span>
+          <span>{state}</span>
         </div>
       </div>
     </div>

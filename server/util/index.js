@@ -1,8 +1,4 @@
-const {
-  CATEGORY_FILTER_ID,
-  AUTHOR_NAME,
-  AUTHOR_LASTNAME,
-} = require("./constants");
+const { AUTHOR_NAME, AUTHOR_LASTNAME } = require("./constants");
 
 module.exports.buildItem = (item) => {
   const {
@@ -13,6 +9,8 @@ module.exports.buildItem = (item) => {
     price,
     condition,
     shipping: { free_shipping },
+    seller_address: { state },
+    sold_quantity,
   } = item;
 
   return {
@@ -26,6 +24,8 @@ module.exports.buildItem = (item) => {
     picture: thumbnail,
     condition,
     free_shipping,
+    state: state.name,
+    soldQuantity: sold_quantity,
   };
 };
 

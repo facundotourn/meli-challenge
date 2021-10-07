@@ -4,12 +4,20 @@ import Price from "../Price";
 
 import "./index.scss";
 
+const CONDITION_MAP = {
+  new: "Nuevo",
+  used: "Usado",
+  not_specified: "",
+};
+
 export default function Product({ product }) {
   const {
     title,
     picture,
     price: { amount },
     description,
+    soldQuantity,
+    condition,
   } = product;
 
   return (
@@ -20,7 +28,10 @@ export default function Product({ product }) {
         </div>
         <div className="product-info">
           <div>
-            <p className="product-sales">Nuevo - 234 vendidos</p>
+            <p className="product-sales">
+              {CONDITION_MAP[condition] +
+                (soldQuantity ? ` - ${soldQuantity} vendidos` : "")}
+            </p>
             <p className="title">{title}</p>
           </div>
           <Price className="price" amount={amount} />

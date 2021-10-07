@@ -8,13 +8,13 @@ const item = require("./controllers/item");
 
 app.use(cors());
 
-const port = 3001;
+const PORT = process.env.PORT || 3001;
 axios.defaults.baseURL = "https://api.mercadolibre.com";
 
 app.get("/api/items", items.get);
 
 app.get("/api/items/:id", item.get);
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
 });

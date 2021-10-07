@@ -9,7 +9,6 @@ export default function ViewPDP() {
   const { id } = useParams();
   const [item, setItem] = useState({});
 
-  console.log(id);
   useEffect(() => {
     getItem(id)
       .then((data) => setItem(data.item))
