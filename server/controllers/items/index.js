@@ -1,7 +1,7 @@
 const { default: axios } = require("axios");
 const { buildAuthor, buildItems, buildCategories } = require("../../util");
 
-exports.get = function (req, res) {
+exports.get = async function (req, res) {
   const { q } = req.query;
   if (!q) {
     res.status(500);
@@ -12,12 +12,13 @@ exports.get = function (req, res) {
     .get(`/sites/MLA/search`, {
       params: req.query,
     })
-    .then(({ data }) => {
+    .then(async ({ data }) => {
       const { results } = data;
+
       res.json({
         author: buildAuthor(),
         items: buildItems(results, 4),
-        categories: buildCategories(data),
+        categories: await buildCategories(data),
       });
     })
     .catch((err) => {

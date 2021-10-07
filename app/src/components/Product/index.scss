@@ -15,9 +15,13 @@
 
       display: flex;
       justify-content: center;
+      align-items: center;
+      height: 680px;
+      width: 680px;
 
       img {
-        width: 100%;
+        width: auto;
+        height: auto;
         max-width: 680px;
         margin: 0 auto;
       }

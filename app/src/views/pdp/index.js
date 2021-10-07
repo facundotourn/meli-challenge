@@ -8,10 +8,14 @@ import "./index.scss";
 export default function ViewPDP() {
   const { id } = useParams();
   const [item, setItem] = useState({});
+  const [categoryPath, setCategoryPath] = useState([]);
 
   useEffect(() => {
     getItem(id)
-      .then((data) => setItem(data.item))
+      .then(({ item }) => {
+        setItem(item);
+        setCategoryPath(item.categories.map((c) => c.name));
+      })
       .catch((err) => console.error(err));
   }, [id]);
 
@@ -21,7 +25,7 @@ export default function ViewPDP() {
 
   return (
     <>
-      <Breadcrumb />
+      <Breadcrumb path={categoryPath} />
       <Product product={item} />
     </>
   );

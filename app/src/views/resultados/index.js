@@ -9,28 +9,13 @@ export default function ViewResultados({ location, history }) {
   const query = params.get("search");
 
   const [items, setItems] = useState([]);
+  const [categoryPath, setCategoryPath] = useState([]);
 
   useEffect(() => {
-    const storedSearch = JSON.parse(
-      localStorage.getItem("product_search") || "{}"
-    );
-
-    if (typeof storedSearch[query] !== "undefined") {
-      setItems(storedSearch[query]);
-      return;
-    }
-
     searchItems(query)
       .then((data) => {
-        let storedSearch = JSON.parse(
-          localStorage.getItem("product_search") || "{}"
-        );
-
-        localStorage.setItem(
-          "product_search",
-          JSON.stringify({ ...storedSearch, [query]: data.items })
-        );
         setItems(data.items);
+        setCategoryPath(data.categories.map((c) => c.name));
       })
       .catch((err) => {
         console.error(err);
@@ -44,7 +29,7 @@ export default function ViewResultados({ location, history }) {
 
   return (
     <>
-      <Breadcrumb />
+      <Breadcrumb path={categoryPath} />
       <div className="items-container">
         {items.map((item) => (
           <ProductSummary

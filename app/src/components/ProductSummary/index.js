@@ -14,7 +14,9 @@ export default function ProductSummary({ item, onProductClick }) {
 
   return (
     <div className="product-summary" onClick={() => onProductClick(id)}>
-      <img className="img-product-summary" src={item.picture} alt={item.id} />
+      <div className="product-summary-image-container">
+        <img className="img-product-summary" src={item.picture} alt={item.id} />
+      </div>
       <div className="product-summary-details">
         <div className="details-main-column">
           <div className="product-price-container">

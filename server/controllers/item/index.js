@@ -1,5 +1,6 @@
 const { default: axios } = require("axios");
 const { buildItem, buildAuthor } = require("../../util");
+const category = require("../category");
 
 exports.get = function (req, res) {
   const id = req.params.id;
@@ -13,12 +14,15 @@ exports.get = function (req, res) {
       axios.spread(({ data: itemData }, { data: descriptionData }) => {
         const { plain_text } = descriptionData;
 
-        res.send({
-          author: buildAuthor(),
-          item: {
-            ...buildItem(itemData),
-            description: plain_text,
-          },
+        category.get(itemData.category_id).then(({ path_from_root }) => {
+          res.send({
+            author: buildAuthor(),
+            item: {
+              ...buildItem(itemData),
+              description: plain_text,
+              categories: path_from_root,
+            },
+          });
         });
       })
     )

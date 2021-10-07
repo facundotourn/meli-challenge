@@ -1,6 +1,42 @@
-const { AUTHOR_NAME, AUTHOR_LASTNAME } = require("./constants");
+const {
+  AUTHOR_NAME,
+  AUTHOR_LASTNAME,
+  CATEGORY_FILTER_ID,
+} = require("./constants");
+
+const category = require("../controllers/category");
 
 module.exports.buildItem = (item) => {
+  const {
+    id,
+    title,
+    pictures,
+    currency_id,
+    price,
+    condition,
+    shipping: { free_shipping },
+    seller_address: { state },
+    sold_quantity,
+    category_id,
+  } = item;
+
+  return {
+    id,
+    title,
+    price: {
+      currency: currency_id,
+      amount: price,
+      decimal: price * 100,
+    },
+    picture: pictures ? pictures[0].url : "",
+    condition,
+    free_shipping,
+    state: state.name,
+    soldQuantity: sold_quantity,
+  };
+};
+
+module.exports.buildSearchResult = (item) => {
   const {
     id,
     title,
@@ -10,7 +46,6 @@ module.exports.buildItem = (item) => {
     condition,
     shipping: { free_shipping },
     seller_address: { state },
-    sold_quantity,
   } = item;
 
   return {
@@ -19,20 +54,19 @@ module.exports.buildItem = (item) => {
     price: {
       currency: currency_id,
       amount: price,
-      decimal: 2,
+      decimal: price * 100,
     },
     picture: thumbnail,
     condition,
     free_shipping,
     state: state.name,
-    soldQuantity: sold_quantity,
   };
 };
 
 module.exports.buildItems = (results, cant) => {
   results = results.splice(0, cant);
 
-  return results ? results.map(this.buildItem) : [];
+  return results ? results.map(this.buildSearchResult) : [];
 };
 
 module.exports.buildAuthor = () => {
@@ -43,5 +77,17 @@ module.exports.buildAuthor = () => {
 };
 
 module.exports.buildCategories = (data) => {
-  return [];
+  const { filters, available_filters } = data;
+
+  const categoryFilter = [...filters, ...available_filters].find(
+    (filter) => filter.id === CATEGORY_FILTER_ID
+  );
+
+  if (categoryFilter.values[0].path_from_root) {
+    return categoryFilter.values[0].path_from_root;
+  } else {
+    return category.get(categoryFilter.values[0].id).then(({ data }) => {
+      return data.path_from_root;
+    });
+  }
 };
