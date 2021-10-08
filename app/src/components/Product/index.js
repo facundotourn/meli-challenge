@@ -34,7 +34,7 @@ export default function Product({ product }) {
             </p>
             <p className="title">{title}</p>
           </div>
-          <Price className="price" amount={amount} />
+          <Price className="price" amount={amount} exponentialCents />
           <Button className="buy-button">{"Comprar"}</Button>
         </div>
       </div>
