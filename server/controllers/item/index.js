@@ -20,7 +20,7 @@ exports.get = function (req, res) {
             item: {
               ...buildItem(itemData),
               description: plain_text,
-              categories: path_from_root,
+              categories: path_from_root.map(c => c.name),
             },
           });
         });

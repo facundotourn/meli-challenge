@@ -14,7 +14,7 @@ export default function ViewPDP() {
     getItem(id)
       .then(({ item }) => {
         setItem(item);
-        setCategoryPath(item.categories.map((c) => c.name));
+        setCategoryPath(item.categories);
       })
       .catch((err) => console.error(err));
   }, [id]);

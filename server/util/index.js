@@ -82,13 +82,13 @@ module.exports.buildCategories = (data) => {
     (filter) => filter.id === CATEGORY_FILTER_ID
   );
 
-  console.log(categoryFilter);
-
   if (categoryFilter.values[0].path_from_root) {
-    return categoryFilter.values[0].path_from_root;
+    console.log(categoryFilter.values[0].path_from_root)
+    return categoryFilter.values[0].path_from_root.map(c => c.name);
   } else {
     return category.get(categoryFilter.values[0].id).then((productCategory) => {
-      return productCategory.path_from_root;
+      console.log(productCategory.path_from_root)
+      return productCategory.path_from_root.map(c => c.name);
     });
   }
 };

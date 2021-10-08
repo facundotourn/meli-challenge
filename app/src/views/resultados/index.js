@@ -15,7 +15,7 @@ export default function ViewResultados({ location, history }) {
     searchItems(query)
       .then((data) => {
         setItems(data.items);
-        setCategoryPath(data.categories.map((c) => c.name));
+        setCategoryPath(data.categories);
       })
       .catch((err) => {
         console.error(err);
