@@ -15,6 +15,15 @@ exports.get = async function (req, res) {
     .then(async ({ data }) => {
       const { results } = data;
 
+      if (!results.length) {
+        res.json({
+          author: buildAuthor(),
+          items: [],
+          categories: [],
+        });
+        return;
+      }
+
       res.json({
         author: buildAuthor(),
         items: buildItems(results, 4),
