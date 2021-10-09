@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import Breadcrumb from "../../components/Breadcrumb";
 import ProductSummary from "../../components/ProductSummary";
 import { searchItems } from "../../services/items";
@@ -29,6 +30,9 @@ export default function ViewResultados({ location, history }) {
 
   return (
     <>
+      <Helmet>
+        <title>{query} - Meli challenge</title>
+      </Helmet>
       <Breadcrumb path={categoryPath} />
       <div className="items-container">
         {items.map((item) => (

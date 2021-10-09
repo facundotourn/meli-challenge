@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { useParams } from "react-router";
 import Breadcrumb from "../../components/Breadcrumb";
 import Product from "../../components/Product";
@@ -19,14 +20,17 @@ export default function ViewPDP() {
       .catch((err) => console.error(err));
   }, [id]);
 
-  if (!Object.keys(item).length) {
-    return null;
-  }
-
   return (
     <>
-      <Breadcrumb path={categoryPath} />
-      <Product product={item} />
+      <Helmet>
+        <title>{item.title ? `${item.title} - ` : ""}Meli challenge</title>
+      </Helmet>
+      {Object.keys(item).length && (
+        <>
+          <Breadcrumb path={categoryPath} />
+          <Product product={item} />
+        </>
+      )}
     </>
   );
 }

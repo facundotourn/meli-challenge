@@ -1,8 +1,8 @@
 import { Route, Switch } from "react-router-dom";
 import "./App.scss";
-import ViewResultados from "./views/resultados";
-import { ViewBusqueda } from "./views/busqueda";
-import ViewPDP from "./views/pdp";
+import ViewResultados from "./pages/resultados";
+import { ViewBusqueda } from "./pages/busqueda";
+import ViewPDP from "./pages/pdp";
 import Header from "./components/Header";
 
 function App() {
