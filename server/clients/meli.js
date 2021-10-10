@@ -1,10 +1,11 @@
 const { default: axios } = require("axios");
+const { MELI_API_BASE_URL } = require("../util/constants");
 
 module.exports = class MeliClient {
   baseUrl;
 
   constructor() {
-    this.baseUrl = "https://api.mercadolibre.com";
+    this.baseUrl = MELI_API_BASE_URL;
   }
 
   getCategory(id) {
