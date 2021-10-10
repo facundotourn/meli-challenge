@@ -14,11 +14,8 @@ exports.get = async function (req, res) {
       const { results } = data;
 
       if (!results.length) {
-        res.json({
-          author: buildAuthor(),
-          items: [],
-          categories: [],
-        });
+        res.status(404);
+        res.end();
         return;
       }
 
@@ -28,8 +25,7 @@ exports.get = async function (req, res) {
         categories: await buildCategories(data),
       });
     })
-    .catch((err) => {
-      console.error(err);
+    .catch(() => {
       res.status(500);
       res.end();
     });

@@ -11,22 +11,17 @@ module.exports = class MeliClient {
   getCategory(id) {
     return axios
       .get(`${this.baseUrl}/categories/${id}`)
-      .then((res) => res.data)
-      .catch((err) => console.log(err));
+      .then((res) => res.data);
   }
 
   getProduct(id) {
-    return axios
-      .get(`${this.baseUrl}/items/${id}`)
-      .then((res) => res.data)
-      .catch((err) => console.log(err));
+    return axios.get(`${this.baseUrl}/items/${id}`).then((res) => res.data);
   }
 
   getDescription(id) {
     return axios
       .get(`${this.baseUrl}/items/${id}/description`)
-      .then((res) => res.data)
-      .catch((err) => console.log(err));
+      .then((res) => res.data);
   }
 
   searchProducts(query) {
@@ -36,7 +31,6 @@ module.exports = class MeliClient {
           q: query,
         },
       })
-      .then((res) => res.data)
-      .catch((err) => console.log(err));
+      .then((res) => res.data);
   }
 };

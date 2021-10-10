@@ -5,6 +5,7 @@ import { PageBusqueda } from "./pages/busqueda";
 import PagePDP from "./pages/pdp";
 import Header from "./components/Header";
 import { LoaderContextProvider } from "./context/loader";
+import PageError from "./pages/error";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route exact path="/" component={PageBusqueda} />
             <Route exact path="/items" component={PageResultados} />
             <Route exact path="/items/:id" component={PagePDP} />
+            <Route exact path="/error" component={PageError} />
           </Switch>
         </div>
       </LoaderContextProvider>

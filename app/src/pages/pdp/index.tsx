@@ -7,7 +7,11 @@ import { useLoader } from "../../context/loader";
 import { getItem } from "../../services/item";
 import "./index.scss";
 
-export default function PagePDP() {
+type PagePDPProps = {
+  history: any;
+};
+
+export default function PagePDP({ history }: PagePDPProps) {
   const { id } = useParams();
   const [item, setItem] = useState<Product | undefined>(undefined);
   const { setProgress } = useLoader();
@@ -16,11 +20,16 @@ export default function PagePDP() {
     setProgress && setProgress(60);
     getItem(id)
       .then(({ item }) => {
-        setProgress && setProgress(100);
         setItem(item);
       })
-      .catch((err) => console.error(err));
-  }, [id, setProgress]);
+      .catch((err) => {
+        console.error(err);
+        history.push("/error");
+      })
+      .finally(() => {
+        setProgress && setProgress(100);
+      });
+  }, [id, setProgress, history]);
 
   return (
     <>

@@ -31,11 +31,13 @@ export default function PageResultados({
       .then((data) => {
         setItems(data.items);
         setCategoryPath(data.categories);
-        setProgress && setProgress(100);
       })
       .catch((err) => {
         console.error(err);
-        history.push("/");
+        history.push("/error");
+      })
+      .finally(() => {
+        setProgress && setProgress(100);
       });
   }, [query, history, setProgress]);
 
