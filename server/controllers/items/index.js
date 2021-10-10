@@ -1,4 +1,4 @@
-const { default: axios } = require("axios");
+const MeliClient = require("../../clients/meli");
 const { buildAuthor, buildItems, buildCategories } = require("../../util");
 
 exports.get = async function (req, res) {
@@ -8,11 +8,9 @@ exports.get = async function (req, res) {
     res.end();
   }
 
-  axios
-    .get(`/sites/MLA/search`, {
-      params: req.query,
-    })
-    .then(async ({ data }) => {
+  new MeliClient()
+    .searchProducts(q)
+    .then(async (data) => {
       const { results } = data;
 
       if (!results.length) {

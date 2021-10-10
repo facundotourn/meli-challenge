@@ -1,10 +1,9 @@
+const MeliClient = require("../clients/meli");
 const {
   AUTHOR_NAME,
   AUTHOR_LASTNAME,
   CATEGORY_FILTER_ID,
 } = require("./constants");
-
-const category = require("../controllers/category");
 
 module.exports.buildItem = (item) => {
   const {
@@ -83,12 +82,12 @@ module.exports.buildCategories = (data) => {
   );
 
   if (categoryFilter.values[0].path_from_root) {
-    console.log(categoryFilter.values[0].path_from_root)
-    return categoryFilter.values[0].path_from_root.map(c => c.name);
+    return categoryFilter.values[0].path_from_root.map((c) => c.name);
   } else {
-    return category.get(categoryFilter.values[0].id).then((productCategory) => {
-      console.log(productCategory.path_from_root)
-      return productCategory.path_from_root.map(c => c.name);
-    });
+    return new MeliClient()
+      .getCategory(categoryFilter.values[0].id)
+      .then((productCategory) => {
+        return productCategory.path_from_root.map((c) => c.name);
+      });
   }
 };
