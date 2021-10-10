@@ -5,12 +5,22 @@ import ProductSummary from "../../components/ProductSummary";
 import { searchItems } from "../../services/items";
 import "./index.scss";
 
-export default function ViewResultados({ location, history }) {
-  const params = new URLSearchParams(location.search);
-  const query = params.get("search");
+type PageResultadosProps = {
+  location: any;
+  history: any;
+};
 
-  const [items, setItems] = useState([]);
-  const [categoryPath, setCategoryPath] = useState([]);
+export default function PageResultados({
+  location,
+  history,
+}: PageResultadosProps) {
+  const params = new URLSearchParams(location.search);
+  const query: string | null = params.get("search");
+
+  const [items, setItems] = useState<Product[] | undefined>(undefined);
+  const [categoryPath, setCategoryPath] = useState<string[] | undefined>(
+    undefined
+  );
 
   useEffect(() => {
     searchItems(query)
@@ -24,7 +34,7 @@ export default function ViewResultados({ location, history }) {
       });
   }, [query, history]);
 
-  const handleProductClick = (id) => {
+  const handleProductClick = (id: string) => {
     history.push(`/items/${id}`);
   };
 
@@ -33,15 +43,16 @@ export default function ViewResultados({ location, history }) {
       <Helmet>
         <title>{query} - Meli challenge</title>
       </Helmet>
-      <Breadcrumb path={categoryPath} />
+      {categoryPath && <Breadcrumb path={categoryPath} />}
       <div className="items-container">
-        {items.map((item) => (
-          <ProductSummary
-            key={item.id}
-            item={item}
-            onProductClick={handleProductClick}
-          />
-        ))}
+        {items &&
+          items.map((item) => (
+            <ProductSummary
+              key={item.id}
+              item={item}
+              onProductClick={handleProductClick}
+            />
+          ))}
       </div>
     </>
   );

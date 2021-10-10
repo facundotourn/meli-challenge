@@ -1,16 +1,20 @@
-import React from "react";
 import Button from "../Button";
 import Price from "../Price";
 
 import "./index.scss";
 
-const CONDITION_MAP = {
+type ProductProps = { product: Product };
+
+interface Dictionary {
+  [key: string]: string;
+}
+const CONDITION_MAP: Dictionary = {
   new: "Nuevo",
   used: "Usado",
   not_specified: "",
 };
 
-export default function Product({ product }) {
+export default function Product({ product }: ProductProps) {
   const {
     title,
     picture,

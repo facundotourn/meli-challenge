@@ -1,6 +1,13 @@
 import axios from "axios";
 
-export async function searchItems(query) {
+type SearchItemsData = {
+  items: Product[];
+  categories: string[];
+};
+
+export async function searchItems(
+  query: string | null
+): Promise<SearchItemsData> {
   return axios
     .get("/api/items", {
       params: {

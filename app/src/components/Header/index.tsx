@@ -7,9 +7,9 @@ import "./index.scss";
 export default function Header() {
   const history = useHistory();
 
-  const handleBusqueda = (e) => {
+  const handleBusqueda = (e: any) => {
     e.preventDefault();
-    const query = e.target["0"].value;
+    const query: string = e.target["0"].value;
 
     if (!query.length) return;
 

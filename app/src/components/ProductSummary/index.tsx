@@ -3,7 +3,15 @@ import "./index.scss";
 import imgFreeShipping from "../../assets/ic_shipping@2x.png.png.png";
 import Price from "../Price";
 
-export default function ProductSummary({ item, onProductClick }) {
+type ProductSummaryProps = {
+  item: Product;
+  onProductClick: (id: string) => void;
+};
+
+export default function ProductSummary({
+  item,
+  onProductClick,
+}: ProductSummaryProps) {
   const {
     id,
     price: { amount },

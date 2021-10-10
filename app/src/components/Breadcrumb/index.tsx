@@ -2,7 +2,12 @@ import React from "react";
 import "./index.scss";
 import rightArrow from "../../assets/right-arrow-angle.png";
 
-export default function Breadcrumb({ path = [], style }) {
+type BreadcrumbProps = {
+  path: string[];
+  style?: React.CSSProperties;
+};
+
+export default function Breadcrumb({ path = [], style = {} }: BreadcrumbProps) {
   return (
     <div className="breadcrumb-container" style={style}>
       {path.map((categoria, index) => (

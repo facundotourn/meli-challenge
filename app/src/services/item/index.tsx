@@ -1,6 +1,10 @@
 import axios from "axios";
 
-export async function getItem(id) {
+type GetItemData = {
+  item: Product;
+};
+
+export async function getItem(id: string): Promise<GetItemData> {
   return axios
     .get(`/api/items/${id}`)
     .then((res) => res.data)

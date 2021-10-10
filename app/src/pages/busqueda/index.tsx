@@ -1,9 +1,8 @@
-import React from "react";
 import "./index.scss";
 
 import { Helmet } from "react-helmet";
 
-export function ViewBusqueda() {
+export function PageBusqueda() {
   return (
     <>
       <Helmet>
