@@ -1,5 +1,3 @@
-import axios from "axios";
-
 type SearchItemsData = {
   items: Product[];
   categories: string[];
@@ -8,12 +6,7 @@ type SearchItemsData = {
 export async function searchItems(
   query: string | null
 ): Promise<SearchItemsData> {
-  return axios
-    .get("/api/items", {
-      params: {
-        q: query,
-      },
-    })
-    .then((res) => res.data)
+  return fetch(`/api/items?q=${query}`)
+    .then((res) => res.json())
     .catch((err) => console.error(err));
 }
