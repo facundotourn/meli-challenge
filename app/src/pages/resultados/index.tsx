@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import Breadcrumb from "../../components/Breadcrumb";
 import ProductSummary from "../../components/ProductSummary";
+import { useLoader } from "../../context/loader";
 import { searchItems } from "../../services/items";
 import "./index.scss";
 
@@ -16,6 +17,7 @@ export default function PageResultados({
 }: PageResultadosProps) {
   const params = new URLSearchParams(location.search);
   const query: string | null = params.get("search");
+  const { setProgress } = useLoader();
 
   const [items, setItems] = useState<Product[] | undefined>(undefined);
   const [categoryPath, setCategoryPath] = useState<string[] | undefined>(
@@ -23,18 +25,22 @@ export default function PageResultados({
   );
 
   useEffect(() => {
+    setProgress && setProgress(60);
+
     searchItems(query)
       .then((data) => {
         setItems(data.items);
         setCategoryPath(data.categories);
+        setProgress && setProgress(100);
       })
       .catch((err) => {
         console.error(err);
         history.push("/");
       });
-  }, [query, history]);
+  }, [query, history, setProgress]);
 
   const handleProductClick = (id: string) => {
+    setProgress && setProgress(40);
     history.push(`/items/${id}`);
   };
 
