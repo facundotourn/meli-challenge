@@ -78,3 +78,40 @@
     }
   }
 }
+
+@media (max-width: 800px) {
+  .product-detail {
+    .main {
+      display: block;
+      grid-template-columns: 1fr;
+
+      .product-image {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      .product-info {
+        grid-row: 2;
+
+        .buy-button {
+          margin-right: 0px;
+        }
+      }
+    }
+  }
+
+  .description-wrapper {
+    grid-template-columns: 1fr;
+
+    div.product-description {
+      grid-column: 1;
+      grid-row: 1;
+      padding: 0px;
+    }
+  }
+}

@@ -14,7 +14,7 @@ export default function Breadcrumb({ path = [], style = {} }: BreadcrumbProps) {
         <>
           <span>{categoria}</span>
           {index !== path.length - 1 && (
-            <img src={rightArrow} height={10} alt={categoria} />
+            <img src={rightArrow} alt={categoria} />
           )}
         </>
       ))}

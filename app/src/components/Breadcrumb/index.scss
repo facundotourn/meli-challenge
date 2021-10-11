@@ -20,4 +20,21 @@ div.breadcrumb-container {
       transition: 150ms ease-in-out;
     }
   }
+
+  img {
+    height: 10px;
+  }
+}
+
+@media (max-width: 800px) {
+  div.breadcrumb-container {
+    span {
+      font-size: 12px;
+      margin: 0px 5px;
+    }
+
+    img {
+      height: 8px;
+    }
+  }
 }
