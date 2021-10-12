@@ -4,10 +4,10 @@ import logo from "../../assets/Logo_ML.png";
 import "./index.scss";
 
 type LogoProps = {
-  style: React.CSSProperties;
+  style?: React.CSSProperties;
 };
 
-export default function Logo({ style }: LogoProps) {
+export default function Logo({ style = {} }: LogoProps) {
   return (
     <div className="logo-container" style={style}>
       <Link to="/">

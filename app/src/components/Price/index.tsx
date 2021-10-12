@@ -5,13 +5,13 @@ import "./index.scss";
 
 type PriceProps = {
   amount: number;
-  className: string;
+  className?: string;
   exponentialCents?: boolean;
 };
 
 export default function Price({
   amount,
-  className,
+  className = "",
   exponentialCents = false,
 }: PriceProps) {
   const [formatted, setFormatted] = useState<React.ReactNode | undefined>(

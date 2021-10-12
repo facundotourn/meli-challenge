@@ -13,14 +13,15 @@ interface SearchForm extends HTMLFormElement {
 
 type InputProps = {
   onSubmit: (e: React.FormEvent<SearchForm>) => void;
+  placeholder: string;
 };
 
-export default function Input({ onSubmit }: InputProps) {
+export default function Input({ onSubmit, placeholder }: InputProps) {
   return (
     <form onSubmit={(e: React.FormEvent<SearchForm>) => onSubmit(e)}>
       <input
         type="text"
-        placeholder="Nunca dejes de buscar"
+        placeholder={placeholder}
         className="input-buscar"
         name="inputBuscar"
       />

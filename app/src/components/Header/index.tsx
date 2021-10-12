@@ -23,7 +23,10 @@ export default function Header() {
     <header>
       <div className="nav-bounds">
         <Logo style={{ marginRight: "30px" }} />
-        <Input onSubmit={handleBusqueda}></Input>
+        <Input
+          onSubmit={handleBusqueda}
+          placeholder="Nunca dejes de buscar"
+        ></Input>
         <div></div>
       </div>
     </header>
