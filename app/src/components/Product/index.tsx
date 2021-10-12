@@ -28,7 +28,7 @@ export default function Product({ product }: ProductProps) {
     <div className="product-detail">
       <div className="main">
         <div className="product-image">
-          <img src={picture} alt="" />
+          <img src={picture} alt="product" />
         </div>
         <div className="product-info">
           <div>

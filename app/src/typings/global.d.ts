@@ -3,7 +3,7 @@ interface Product {
   title: string;
   picture: string;
   price: Price;
-  description: string;
+  description?: string;
   soldQuantity: number;
   condition: string;
   free_shipping: boolean;
