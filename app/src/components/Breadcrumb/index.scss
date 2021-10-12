@@ -4,25 +4,29 @@ div.breadcrumb-container {
   font-size: 14px;
   margin: 16px 0px;
 
-  span {
-    font-size: 14px;
-    margin: 0px 10px;
-    color: $gray;
-    transition: 100ms ease-in-out;
+  div {
+    display: inline;
 
-    &:last-child {
-      font-weight: bold;
+    span {
+      font-size: 14px;
+      margin: 0px 10px;
+      color: $gray;
+      transition: 100ms ease-in-out;
+
+      &:last-child {
+        font-weight: bold;
+      }
+
+      &:hover {
+        color: $darkgray;
+        cursor: pointer;
+        transition: 150ms ease-in-out;
+      }
     }
 
-    &:hover {
-      color: $darkgray;
-      cursor: pointer;
-      transition: 150ms ease-in-out;
+    img {
+      height: 10px;
     }
-  }
-
-  img {
-    height: 10px;
   }
 }
 

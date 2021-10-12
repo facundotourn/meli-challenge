@@ -4,9 +4,9 @@ import "./index.scss";
 
 type ButtonProps = {
   children: React.ReactNode;
-  className: string;
+  className?: string;
 };
 
-export default function Button({ children, className }: ButtonProps) {
+export default function Button({ children, className = "" }: ButtonProps) {
   return <button className={`btn ${className}`}>{children}</button>;
 }
