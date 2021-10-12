@@ -4,7 +4,7 @@ import imgFreeShipping from "../../assets/ic_shipping@2x.png.png.png";
 import Price from "../Price";
 
 type ProductSummaryProps = {
-  item: Product;
+  item: SearchProduct;
   onProductClick: (id: string) => void;
 };
 
@@ -18,12 +18,13 @@ export default function ProductSummary({
     title,
     free_shipping,
     state,
+    picture,
   } = item;
 
   return (
     <div className="product-summary" onClick={() => onProductClick(id)}>
       <div className="product-summary-image-container">
-        <img className="img-product-summary" src={item.picture} alt={item.id} />
+        <img className="img-product-summary" src={picture} alt={id} />
       </div>
       <div className="product-summary-details">
         <div className="details-main-column">

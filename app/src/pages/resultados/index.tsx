@@ -19,7 +19,7 @@ export default function PageResultados({
   const query: string | null = params.get("search");
   const { setProgress } = useLoader();
 
-  const [items, setItems] = useState<Product[] | undefined>(undefined);
+  const [items, setItems] = useState<SearchProduct[] | undefined>(undefined);
   const [categoryPath, setCategoryPath] = useState<string[] | undefined>(
     undefined
   );

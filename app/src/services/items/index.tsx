@@ -1,5 +1,5 @@
 type SearchItemsData = {
-  items: Product[];
+  items: SearchProduct[];
   categories: string[];
 };
 

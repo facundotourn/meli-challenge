@@ -11,6 +11,15 @@ interface Product {
   categories: string[];
 }
 
+interface SearchProduct {
+  id: string;
+  title: string;
+  picture: string;
+  price: Price;
+  free_shipping: boolean;
+  state: any;
+}
+
 interface Price {
   amount: number;
 }
