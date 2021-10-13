@@ -22,7 +22,7 @@ exports.get = function (req, res) {
       });
     })
     .catch((err) => {
-      res.status(500);
-      res.send("Internal server error");
+      res.status(err.response.status);
+      res.send(err.response.data);
     });
 };

@@ -29,11 +29,10 @@ export default function PageResultados({
 
     searchItems(query)
       .then((data) => {
-        setItems(data.items);
-        setCategoryPath(data.categories);
+        setItems(data?.items || []);
+        setCategoryPath(data?.categories || []);
       })
       .catch((err) => {
-        console.error(err);
         history.push("/error");
       })
       .finally(() => {

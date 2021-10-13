@@ -23,7 +23,6 @@ export default function PagePDP({ history }: PagePDPProps) {
         setItem(item);
       })
       .catch((err) => {
-        console.error(err);
         history.push("/error");
       })
       .finally(() => {

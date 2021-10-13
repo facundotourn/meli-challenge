@@ -7,6 +7,13 @@ export async function searchItems(
   query: string | null
 ): Promise<SearchItemsData> {
   return fetch(`/api/items?q=${query}`)
-    .then((res) => res.json())
-    .catch((err) => console.error(err));
+    .then((res) => {
+      if (res.status === 404) {
+        throw new Error("Error buscando productos");
+      }
+      return res.json();
+    })
+    .catch((err) => {
+      throw err;
+    });
 }
