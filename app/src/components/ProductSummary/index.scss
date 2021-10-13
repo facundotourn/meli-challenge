@@ -69,8 +69,7 @@ div.product-summary-image-container {
   background-color: white;
 
   img.img-product-summary {
-    max-height: 180px;
-    max-width: 180px;
+    width: 100%;
     -o-object-fit: contain;
     object-fit: contain;
     border-radius: 4px;
