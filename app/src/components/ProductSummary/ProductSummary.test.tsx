@@ -1,5 +1,6 @@
 import "@testing-library/jest-dom/extend-expect";
 import { render } from "@testing-library/react";
+import { fireEvent } from "@testing-library/react";
 import ProductSummary from "./index";
 
 describe("<ProductSummary />", () => {
@@ -57,5 +58,31 @@ describe("<ProductSummary />", () => {
       'img[alt="free shipping"]'
     );
     expect(freeShipping).toBeFalsy();
+  });
+
+  test("click on product should execute handler 1 time", () => {
+    const mockHanlder = jest.fn();
+    const props = {
+      item: {
+        id: "test-id",
+        price: { amount: 2525 },
+        picture: "test-picture",
+        title: "test-title",
+        free_shipping: false,
+        state: "new",
+      },
+      onProductClick: mockHanlder,
+    };
+
+    const component = render(<ProductSummary {...props} />);
+
+    const productSummary: HTMLElement | null =
+      component.container.querySelector(".product-summary");
+
+    expect(productSummary).toBeDefined();
+
+    fireEvent.click(productSummary!);
+
+    expect(mockHanlder).toBeCalledTimes(1);
   });
 });
