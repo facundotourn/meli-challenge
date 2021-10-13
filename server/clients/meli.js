@@ -21,7 +21,12 @@ module.exports = class MeliClient {
   getDescription(id) {
     return axios
       .get(`${this.baseUrl}/items/${id}/description`)
-      .then((res) => res.data);
+      .then((res) => res.data)
+      .catch(({ response }) => {
+        if (response.status === 404) {
+          return { plain_text: "" };
+        }
+      });
   }
 
   searchProducts(query) {

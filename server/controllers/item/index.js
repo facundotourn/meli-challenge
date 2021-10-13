@@ -21,7 +21,7 @@ exports.get = function (req, res) {
         });
       });
     })
-    .catch(() => {
+    .catch((err) => {
       res.status(500);
       res.send("Internal server error");
     });
